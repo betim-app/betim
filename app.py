@@ -61,7 +61,7 @@ def post_images():
         return jsonify({
             'id': str(matched.get('_id')),
             'description': matched.get('description'),
-            'comment': matched.get('comment')
+            'comment': matched.get('comment') or 'Just asked.'
         })
 
     tags = get_tags(url)
