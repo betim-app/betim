@@ -5,11 +5,18 @@ from flask import Flask, Response, request
 from pymongo import MongoClient
 from bson import json_util
 from clarifai.client import ClarifaiApi
+import urbanairship as ua
+from urbanairship import ios
 
-from settings_local import CLARIFAI_APP_ID, CLARIFAI_APP_SECRET
+from settings_local import (
+    CLARIFAI_APP_ID, CLARIFAI_APP_SECRET,
+    UA_KEY, UA_SECRET
+)
 
 app = Flask(__name__)
 db = MongoClient()["betim"]
+
+airship = ua.Airship(UA_KEY, UA_SECRET)
 
 clarifai_api = ClarifaiApi(
     app_id=CLARIFAI_APP_ID,
@@ -55,6 +62,17 @@ def get_tags(url):
     return matched['result']['tag']['classes']
 
 
+def send_push_notification():
+    push = airship.create_push()
+    push.audience = ua.all_
+    push.notification = ua.notification(
+        alert="Betimlenecek bir gorsel var",
+        ios=ios(sound='betim', badge=1),
+    )
+    push.device_types = ua.all_
+    push.send()
+
+
 @app.route("/images", methods=['POST'])
 def post_images():
     data = request.json
@@ -85,6 +103,8 @@ def post_images():
         'description': description,
         'comment': 'Just asked.'
     })
+
+    send_push_notification()
 
     response.status_code = 201
     return response
@@ -121,4 +141,5 @@ def after_request(response):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    send_push_notification()#app.run(host="0.0.0.0", port=8080, debug=True)
+
