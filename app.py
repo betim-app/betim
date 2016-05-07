@@ -141,5 +141,4 @@ def after_request(response):
 
 
 if __name__ == "__main__":
-    send_push_notification()#app.run(host="0.0.0.0", port=8080, debug=True)
-
+    app.run(host="0.0.0.0", port=8080, debug=True)
