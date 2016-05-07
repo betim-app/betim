@@ -1,0 +1,123 @@
+body {
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Open Sans', sans-serif;
+    background: #fafafa;
+    margin: 0;
+}
+
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 300;
+}
+
+.content {
+    font-size: 1.3em;
+}
+
+.about-us {
+    margin-left: 30px;
+}
+.about-us img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+.about-us p {
+    float: left;
+    margin-right: 30px;
+    width: 200px;
+}
+
+.about-us p span {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+.content {
+    margin-top: 100px;
+}
+
+.tiles {
+    clear: both;
+    padding-top: 50px;
+}
+
+.background {
+    background: url(http://lamcdn.net/hopesandfears.com/post-cover/K85I1srhkgk3vM1FzGVBTw-default.gif);
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+    margin-top: 50px;
+}
+
+.background h1 {
+    color: white;
+    font-weight: 300;
+    padding-top: 300px;
+    text-align: left;
+    padding-left: 50px;
+    font-size: 3em;
+}
+
+.features {
+    margin: 100px 0 100px;
+    font-size: 1.2em;
+    line-height: 1.7em;
+}
+
+.splash {
+    background-color: #91d2dd;
+    padding: 100px;
+}
+
+.splash .logo {
+    margin: auto;
+    padding: 50px;
+    background: #fff;
+    text-align: center;
+    width: 300px;
+    border-radius: 30px;
+}
+
+.rising {
+    margin: 20px 0 100px;
+    font-size: 1.1em;
+    line-height: 1.7em;
+    text-align: left;
+}
+
+.github {
+    background-color: #fff;
+    color: black;
+    padding: 70px 0 100px;
+    text-align: center;
+    font-size: 1.9em;
+    font-weight: 100;
+    border-top: 1px solid #313131;
+}
+
+.meaning {
+    background: #2b2b2b;
+}
+
+.meaning h1 {
+    padding: 100px 100px 50px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 3em;
+}
+
+.meaning-content {
+    padding: 5px 0 100px;
+    text-align: center;
+}

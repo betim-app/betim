@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
 
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 from pymongo import MongoClient
 from bson import json_util
 from clarifai.client import ClarifaiApi
@@ -138,6 +138,11 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     return response
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
