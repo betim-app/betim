@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 
 from flask import Flask, Response, request
@@ -23,14 +24,20 @@ def jsonify(data):
 
 @app.route("/images", methods=['GET'])
 def get_images():
-    result = db.images.find()
+    result = db.images.find({
+        "comment": None
+    }).sort([
+        ['date_creation', -1]
+    ])
+
     return jsonify({
         'images': [
             {
                 'id': str(image.get('_id')),
                 'description': image.get('description'),
                 'url': image.get('url'),
-                'comment': image.get('comment')
+                'comment': image.get('comment'),
+                'date_creation': image.get('date_creation').isoformat()
             } for image in result
             ]
     })
@@ -70,6 +77,7 @@ def post_images():
     inserted = db.images.insert({
         "url": url,
         "description": description,
+        'date_creation': datetime.now()
     })
 
     response = jsonify({
